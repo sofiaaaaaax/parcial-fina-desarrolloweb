@@ -1,0 +1,228 @@
+.resenas-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/fondo-resenas.jpg'); /* o '/fondo-resenas.jpg' si usas otra */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 36px 20px 60px;
+}
+
+/* Capa oscura elegante para asegurar buen contraste en texto, formulario y tabla */
+.resenas-container::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 10, 7, 0.84) 0%,
+    rgba(20, 15, 11, 0.78) 50%,
+    rgba(13, 10, 7, 0.88) 100%
+  );
+  z-index: 0;
+}
+
+/* Elevamos el contenido sobre la capa oscura */
+.resenas-container > * {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resenas-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resenas-container header h2 {
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.resenas-container header small {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.resenas-container header button {
+  padding: 9px 16px;
+  background: rgba(24, 19, 15, 0.85);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.resenas-container header button:hover {
+  background: var(--gold);
+  color: #16110c;
+}
+
+.formulario,
+.listado {
+  background: rgba(27, 21, 17, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.5);
+}
+
+.formulario h3,
+.listado h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.formulario form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.formulario form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Observaciones y botones ocupan el ancho completo */
+.formulario form > div:nth-child(4),
+.formulario form > button {
+  grid-column: 1 / -1;
+}
+
+.formulario label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-input);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 6px;
+  color: var(--cream);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: var(--gold);
+}
+
+.formulario button[type='submit'] {
+  justify-self: start;
+  padding: 10px 22px;
+  background: var(--gold);
+  color: #16110c;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.formulario button[type='submit']:hover {
+  background: var(--gold-hover);
+}
+
+.formulario button[type='button'] {
+  justify-self: start;
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(184, 173, 158, 0.35);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.exito {
+  margin-top: 12px;
+  color: var(--success);
+  font-size: 0.9rem;
+}
+
+.error {
+  margin-top: 12px;
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+.listado table {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  font-size: 0.92rem;
+}
+
+.listado th,
+.listado td {
+  border: none;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.listado th {
+  color: var(--gold);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.listado tbody tr:hover {
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.listado td button {
+  padding: 6px 11px;
+  margin-right: 6px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface-input);
+  color: var(--cream);
+  transition: all 0.15s ease;
+}
+
+.listado td button:first-child:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.listado td button:last-child:hover {
+  border-color: var(--error);
+  color: var(--error);
+}

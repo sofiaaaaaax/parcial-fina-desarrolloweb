@@ -1,0 +1,111 @@
+<div class="resenas-container">
+  <header>
+    <div>
+      <h2>Mis Reseñas de Restaurantes</h2>
+      @if (usuarioNombre) {
+        <small>Usuario: {{ usuarioNombre }}</small>
+      }
+    </div>
+    <button type="button" (click)="cerrarSesion()">Cerrar sesión</button>
+  </header>
+
+  <section class="formulario">
+    <h3>{{ editandoId !== null ? 'Editar reseña' : 'Nueva reseña' }}</h3>
+
+    <form (ngSubmit)="guardarResena()">
+      <div>
+        <label for="nombre_restaurante">Nombre Restaurante</label>
+        <input
+          id="nombre_restaurante"
+          type="text"
+          name="nombre_restaurante"
+          [(ngModel)]="form.nombre_restaurante"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="calificacion">Calificación (1 a 5)</label>
+        <input
+          id="calificacion"
+          type="number"
+          name="calificacion"
+          min="1"
+          max="5"
+          [(ngModel)]="form.calificacion"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="fecha_visita">Fecha de Visita</label>
+        <input
+          id="fecha_visita"
+          type="date"
+          name="fecha_visita"
+          [(ngModel)]="form.fecha_visita"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="observaciones">Observaciones</label>
+        <textarea
+          id="observaciones"
+          name="observaciones"
+          rows="3"
+          [(ngModel)]="form.observaciones"
+        ></textarea>
+      </div>
+
+      <button type="submit">
+        {{ editandoId !== null ? 'Guardar cambios' : 'Crear reseña' }}
+      </button>
+
+      @if (editandoId !== null) {
+        <button type="button" (click)="limpiarFormulario()">Cancelar</button>
+      }
+    </form>
+
+    @if (mensaje) {
+      <p class="exito">{{ mensaje }}</p>
+    }
+    @if (errorMsg) {
+      <p class="error">{{ errorMsg }}</p>
+    }
+  </section>
+
+  <section class="listado">
+    <h3>Listado</h3>
+
+    @if (resenas.length === 0) {
+      <p>No tienes reseñas registradas todavía.</p>
+    } @else {
+      <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Nombre Restaurante</th>
+            <th>Calificación</th>
+            <th>Fecha Visita</th>
+            <th>Observaciones</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (resena of resenas; track resena.id) {
+            <tr>
+              <td>{{ resena.nombre_restaurante }}</td>
+              <td>{{ resena.calificacion }} / 5</td>
+              <td>{{ resena.fecha_visita }}</td>
+              <td>{{ resena.observaciones }}</td>
+              <td>
+                <button type="button" (click)="editarResena(resena)">Editar</button>
+                <button type="button" (click)="eliminarResena(resena.id)">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </section>
+</div>

@@ -1,0 +1,160 @@
+.login-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background-image: url('/fondo-restaurante.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Capa oscura elegante sobre la imagen de fondo */
+.login-container::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 9, 7, 0.78) 0%,
+    rgba(20, 15, 11, 0.68) 100%
+  );
+  z-index: 0;
+}
+
+/* Cuadrado centrado sobre el fondo */
+.login-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.login-card > p {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-card form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-card label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-input);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 6px;
+  color: var(--cream);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
+}
+
+.login-card button[type='submit'] {
+  margin-top: 4px;
+  padding: 11px 16px;
+  background: var(--gold);
+  color: #16110c;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.login-card button[type='submit']:hover:not(:disabled) {
+  background: var(--gold-hover);
+  transform: translateY(-1px);
+}
+
+.login-card button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.toggle-btn {
+  margin-top: 12px;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: var(--gold);
+}
+
+.exito {
+  color: var(--success);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* En modo registro o pantallas pequeñas, evitamos que el cuadrado se apriete */
+@media (max-width: 440px) {
+  .login-card {
+    aspect-ratio: auto;
+    min-height: 390px;
+    padding: 24px 20px;
+  }
+}

@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #14100d;
+  --card-bg: rgba(24, 19, 15, 0.9);
+  --surface-input: #221b16;
+  --gold: #d4af37;
+  --gold-hover: #e5c454;
+  --cream: #f5efe6;
+  --muted: #b8ad9e;
+  --border: rgba(212, 175, 55, 0.28);
+  --error: #ff6b6b;
+  --success: #5cd69b;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background-color: var(--bg-dark);
+  color: var(--cream);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
